@@ -1,7 +1,7 @@
 package com.example.board.service;
 
-import com.example.board.dto.MemberResponseDto;
-import com.example.board.dto.SignUpResponseDto;
+import com.example.board.dto.response.MemberResponseDto;
+import com.example.board.dto.response.SignUpResponseDto;
 import com.example.board.entity.Member;
 import com.example.board.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,13 +23,13 @@ public class MemberService {
     }
 
     public MemberResponseDto findById(Long id) {
-        Member findMember = memberRepository.findByOrElseThrow(id);
-        return new MemberResponseDto(findMember.getUsername(), findMember.getAge(), findMember.getCreatedAt(), findMember.getModifiedAt());
+        Member findMember = memberRepository.findByIdOrElseThrow(id);
+        return new MemberResponseDto(findMember.getId(), findMember.getUsername(), findMember.getAge(), findMember.getCreatedAt(), findMember.getModifiedAt());
     }
 
     @Transactional
     public void updatePassword(Long id, String oldPassword, String newPassword) {
-        Member findMember = memberRepository.findByOrElseThrow(id);
+        Member findMember = memberRepository.findByIdOrElseThrow(id);
 
         if (!findMember.getPassword().equals(oldPassword)) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "비밀번호가 일치하지 않습니다.");

@@ -1,9 +1,9 @@
 package com.example.board.controller;
 
-import com.example.board.dto.MemberResponseDto;
-import com.example.board.dto.SignUpRequestDto;
-import com.example.board.dto.SignUpResponseDto;
-import com.example.board.dto.UpdatePasswordRequestDto;
+import com.example.board.dto.response.MemberResponseDto;
+import com.example.board.dto.request.SignUpRequestDto;
+import com.example.board.dto.response.SignUpResponseDto;
+import com.example.board.dto.request.UpdatePasswordRequestDto;
 import com.example.board.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
